@@ -1,7 +1,6 @@
 package com.example.dastpokht
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import network.ApiFood
@@ -18,7 +17,9 @@ class FoodSearchViewModel : ViewModel() {
         get() = _hits
 
 
-    private fun getFoodApi() {
+
+
+      fun getFoodApi() {
         DastpokhtAPi.retrofitService.getProperties(
             "pasta",
             "aeff32ad",
@@ -36,4 +37,5 @@ class FoodSearchViewModel : ViewModel() {
             }
         })
     }
+
 }

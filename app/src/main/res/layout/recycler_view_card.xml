@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:layout_margin="20dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/food_list_image"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            android:contentDescription="image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/food_list_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="Pasta laoferedo"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="@id/food_list_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView_food_list"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/food_list_image">
+
+            <TextView
+                android:id="@+id/food_list_health_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintTop_toBottomOf="@id/food_list_image" />
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <!--
+
+        <TextView
+            android:id="@+id/food_list_serving"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20sp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="4 serving"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nestedScrollView_food_list" />
+
+        <TextView
+            android:id="@+id/food_list_protein"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20sp"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:text="50g"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nestedScrollView_food_list" />
+
+        <TextView
+            android:id="@+id/food_list_protein_gr"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:text="protein"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/food_list_protein"
+            app:layout_constraintEnd_toStartOf="@id/food_list_protein" />
+
+        <TextView
+            android:id="@+id/food_list_fat"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/food_list_protein" />
+
+        <TextView
+            android:id="@+id/food_list_fat_gr"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/food_list_fat"
+            app:layout_constraintEnd_toStartOf="@+id/food_list_fat" />
+
+        <TextView
+            android:id="@+id/food_list_carb"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/food_list_fat" />
+
+        <TextView
+            android:id="@+id/food_list_carb_gr"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/food_list_carb"
+            app:layout_constraintEnd_toStartOf="@id/food_list_carb" />
+
+        <TextView
+            android:id="@+id/food_list_kcal"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+
+            android:gravity="bottom"
+            android:text="Kcal"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/food_list_Kcal_number"
+            app:layout_constraintStart_toEndOf="@+id/food_list_Kcal_number" />
+
+        <TextView
+            android:id="@+id/food_list_Kcal_number"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="371"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintBottom_toBottomOf="@+id/food_list_carb_gr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/food_list_serving" />
+-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

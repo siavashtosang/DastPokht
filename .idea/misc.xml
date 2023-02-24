@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kotlin-Project/dastpokht/app/src/main/res/layout-land/fragment_show_food_list.xml" value="0.25" />
         <entry key="..\:/Kotlin-Project/dastpokht/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Kotlin-Project/dastpokht/app/src/main/res/layout/fragment_show_food_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Kotlin-Project/dastpokht/app/src/main/res/layout/fragment_show_food_list.xml" value="0.25" />
+        <entry key="..\:/Kotlin-Project/dastpokht/app/src/main/res/layout/recycler_view_card.xml" value="0.253125" />
       </map>
     </option>
   </component>
