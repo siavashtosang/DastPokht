@@ -4,8 +4,10 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="400dp"
-    android:layout_margin="20dp"
-    app:cardElevation="6dp">
+    app:cardCornerRadius="16dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +17,9 @@
         <ImageView
             android:id="@+id/food_list_image"
             android:layout_width="match_parent"
-            android:layout_height="242dp"
-            android:contentDescription="image"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,16 +28,14 @@
             android:id="@+id/food_list_name"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:gravity="center"
-            android:paddingStart="6dp"
-            android:paddingEnd="6dp"
-            android:text="Pasta laoferedo"
-            android:textSize="@dimen/text_size_medium"
-            app:layout_constraintBottom_toBottomOf="@id/food_list_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:padding="8dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/food_list_image"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
             android:id="@+id/nestedScrollView_food_list"
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -46,11 +47,14 @@
             <TextView
                 android:id="@+id/food_list_health_label"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="@dimen/text_size_medium"
+                android:layout_height="wrap_content"
+                android:paddingTop="6dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/food_list_image" />
 
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
 
 
         <!--
