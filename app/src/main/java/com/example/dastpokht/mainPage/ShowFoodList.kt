@@ -1,21 +1,24 @@
-package com.example.dastpokht
+package com.example.dastpokht.mainPage
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.example.dastpokht.FoodViewModel
+import com.example.dastpokht.R
 import com.example.dastpokht.databinding.FragmentShowFoodListBinding
-import network.Hit
-import recyclerView.FoodListAdapter
 
 class ShowFoodList : Fragment() {
 
     private var _binding: FragmentShowFoodListBinding? = null
 
     private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +38,19 @@ class ShowFoodList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProvider(requireActivity())[FoodSearchViewModel::class.java]
+        val viewModel = ViewModelProvider(requireActivity())[FoodViewModel::class.java]
         viewModel.getFoodApi()
-        val adapter = FoodListAdapter()
+
+        val adapter = FoodListAdapter { hitsClicked ->
+
+            Toast.makeText(
+                requireContext(),
+                "${hitsClicked.recipe?.label} clicked",
+                Toast.LENGTH_SHORT
+            ).show()
+            Navigation.findNavController(view).navigate(R.id.action_showFoodList_to_foodDetails)
+            viewModel.clickedUri(uri = hitsClicked.recipe?.uri)
+        }
         binding.foodListRecycler.adapter = adapter
 
         viewModel.hits.observe(viewLifecycleOwner, Observer {

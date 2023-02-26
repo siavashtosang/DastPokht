@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/showFoodList"
-        android:name="com.example.dastpokht.ShowFoodList"
+        android:name="com.example.dastpokht.mainPage.ShowFoodList"
         android:label="fragment_show_food_list"
-        tools:layout="@layout/fragment_show_food_list" />
+        tools:layout="@layout/fragment_show_food_list" >
+        <action
+            android:id="@+id/action_showFoodList_to_foodDetails"
+            app:destination="@id/foodDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetails"
+        android:name="com.example.dastpokht.detailPage.FoodDetails"
+        android:label="fragment_food_details"
+        tools:layout="@layout/fragment_food_details" />
 </navigation>

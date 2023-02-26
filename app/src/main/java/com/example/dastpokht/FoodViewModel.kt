@@ -10,16 +10,34 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FoodSearchViewModel : ViewModel() {
+class FoodViewModel : ViewModel() {
 
     private val _hits = MutableLiveData<List<Hit>?>()
     val hits: MutableLiveData<List<Hit>?>
         get() = _hits
 
+    private var clickedUri: String? = null
+    var findFood: Hit? = null
 
 
+    fun clickedUri(uri: String?) {
 
-      fun getFoodApi() {
+        clickedUri = uri
+
+        findFood(clickedUri)
+    }
+
+    private fun findFood(clickedUri: String?) {
+
+        findFood = _hits.value?.find {
+
+            it.recipe?.uri == clickedUri
+        }
+
+    }
+
+
+    fun getFoodApi() {
         DastpokhtAPi.retrofitService.getProperties(
             "pasta",
             "aeff32ad",
@@ -28,7 +46,7 @@ class FoodSearchViewModel : ViewModel() {
             override fun onResponse(call: Call<ApiFood>, response: Response<ApiFood>) {
 
                 _hits.value = response.body()?.hits
-                Log.i("testlog", "onResponse >> $_hits")
+
             }
 
             override fun onFailure(call: Call<ApiFood>, t: Throwable) {
