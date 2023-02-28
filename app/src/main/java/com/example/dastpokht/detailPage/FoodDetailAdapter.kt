@@ -1,48 +1,50 @@
 package com.example.dastpokht.detailPage
 
+/*
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dastpokht.databinding.RecyclerViewDetailBinding
-import network.Hit
 import network.TotalNutrients
 
-class FoodDetailAdapter: ListAdapter<Hit,FoodDetailAdapter.FoodDetailViewHolder>( object : DiffUtil.ItemCallback<Hit>(){
-    override fun areItemsTheSame(oldItem: Hit, newItem: Hit): Boolean {
 
-        return oldItem.recipe?.uri == newItem.recipe?.uri
-    }
+class FoodDetailAdapter(var data: TotalNutrients) :
+    ListAdapter<TotalNutrients, FoodDetailAdapter.FoodDetailViewHolder>(object :
+        DiffUtil.ItemCallback<TotalNutrients>() {
+        override fun areItemsTheSame(oldItem: TotalNutrients, newItem: TotalNutrients): Boolean {
 
-    override fun areContentsTheSame(oldItem: Hit, newItem: Hit): Boolean {
-        return oldItem.recipe?.uri == newItem.recipe?.uri
-    }
-}){
+            return oldItem.CA?.quantity == newItem.CA?.quantity
+        }
+
+        override fun areContentsTheSame(oldItem: TotalNutrients, newItem: TotalNutrients): Boolean {
+            return oldItem.CA?.label == newItem.CA?.label
+        }
+    }) {
 
 
-     class FoodDetailViewHolder(binding: RecyclerViewDetailBinding) : RecyclerView.ViewHolder (binding.root){
+    inner class FoodDetailViewHolder(binding: RecyclerViewDetailBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-          val nutrientsName = binding.nutrients
-          val nutrientsMg = binding.nutrientsMg
+        val nutrientsName = binding.nutrients
+        val nutrientsMg = binding.nutrientsMg
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodDetailViewHolder {
 
-        val binding = RecyclerViewDetailBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        val binding =
+            RecyclerViewDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FoodDetailViewHolder(binding)
 
     }
 
     override fun onBindViewHolder(holder: FoodDetailViewHolder, position: Int) {
 
-        val item = getItem(position)
+        data = getItem(position)
 
-        val data = listOf<TotalNutrients>()
-        data.forEach{
-            holder.nutrientsName.text = item.recipe?.totalNutrients?.CA?.label
-        }
+        holder.nutrientsName.text = data.CHOLE?.label.toString()
+        holder.nutrientsMg.text = data.CHOLE?.quantity?.toInt().toString()
     }
-}
+}*/

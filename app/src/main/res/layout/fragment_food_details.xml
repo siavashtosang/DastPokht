@@ -11,21 +11,21 @@
         android:id="@+id/food_image_detail"
         android:layout_width="0dp"
         android:layout_height="181dp"
+        android:contentDescription="@string/image"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/food_name_detail"
         android:layout_width="match_parent"
-        android:textSize="30sp"
+        android:layout_height="50dp"
         android:paddingStart="16dp"
         android:paddingEnd="6dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/food_image_detail"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/food_image_detail" />
 
     <TextView
         android:id="@+id/cuisine_type"
@@ -33,7 +33,6 @@
         android:layout_height="51dp"
         android:layout_margin="12dp"
         android:gravity="center"
-        android:text="italian"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/food_name_detail" />
@@ -43,20 +42,18 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:text="4568"
-        android:paddingEnd="6dp"
-        android:paddingStart="6dp"
         android:gravity="end"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
         android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/cuisine_type"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cuisine_type" />
 
     <TextView
         android:id="@+id/total_kcal"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_small"
-        android:text="Kcal"
         app:layout_constraintBaseline_toBaselineOf="@id/total"
         app:layout_constraintStart_toEndOf="@id/total" />
 
@@ -82,7 +79,6 @@
                 android:layout_height="30dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="2dp"
-                android:text="Protein"
                 android:textSize="20sp" />
 
             <TextView
@@ -90,7 +86,6 @@
                 android:layout_width="70dp"
                 android:layout_height="30dp"
 
-                android:text="500"
                 android:textSize="20sp" />
 
         </TableRow>
@@ -109,13 +104,11 @@
                 android:layout_height="30dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="2dp"
-                android:text="Fat"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/fat_g"
                 android:height="30dp"
-                android:text="400"
                 android:textSize="20sp" />
 
         </TableRow>
@@ -134,27 +127,507 @@
                 android:layout_height="30dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="2dp"
-                android:text="Carb"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/carb_g"
                 android:layout_height="30dp"
-                android:text="300"
                 android:textSize="20sp" />
 
         </TableRow>
 
     </TableLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/fiber"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small"
+                    />
+
+                <TextView
+                    android:id="@+id/fiber_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/sugars"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/sugars_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/cholesterol"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small"
+                    />
+
+                <TextView
+                    android:id="@+id/cholesterol_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/calcium"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/calcium_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/magnesium"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/magnesium_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/sodium"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/sodium_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/potassium"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/potassium_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/iron"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/iron_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/zinc"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/zinc_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_a"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_a_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_c"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_c_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_b_six"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_b_six_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_b_12"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_b_12_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_d"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_d_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_e"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_e_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="20dp">
+
+                <TextView
+                    android:id="@+id/vitamin_k"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="6dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/vitamin_k_mg"
+                    android:layout_width="170dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardElevation="12dp"
+            app:cardCornerRadius="20dp">
+
+            <TextView
+                android:id="@+id/folic_acid"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:paddingStart="50dp"
+                android:paddingEnd="6dp"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/folic_acid_mg"
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_small" />
+
+        </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/show_detail_nut"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/recycler_view_detail"/>
+        tools:listitem="@layout/recycler_view_detail"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
