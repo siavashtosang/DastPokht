@@ -1,6 +1,7 @@
 package com.example.dastpokht.mainPage
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,16 @@ class ShowFoodList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModel = ViewModelProvider(requireActivity())[FoodViewModel::class.java]
-        viewModel.getFoodApi()
+
+
+        binding.searchButton.setOnClickListener{
+
+            val food = binding.searchFood.editText?.text.toString()
+
+            Log.i("testLog","food -->$food")
+
+            viewModel.getFoodApi(foodSearch = food)
+        }
 
         val adapter = FoodListAdapter { hitsClicked ->
 

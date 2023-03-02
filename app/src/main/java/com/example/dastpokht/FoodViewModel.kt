@@ -37,19 +37,24 @@ class FoodViewModel : ViewModel() {
     }
 
 
-    fun getFoodApi() {
+    fun getFoodApi(foodSearch:String) {
         DastpokhtAPi.retrofitService.getProperties(
-            "pasta",
+            foodSearch,
             "aeff32ad",
             "4481b20cba9b05be29907a5bef6f11a1"
         ).enqueue(object : Callback<ApiFood> {
+
             override fun onResponse(call: Call<ApiFood>, response: Response<ApiFood>) {
+
+                Log.i("testLog", "onResponse --> $foodSearch")
 
                 _hits.value = response.body()?.hits
 
             }
 
             override fun onFailure(call: Call<ApiFood>, t: Throwable) {
+
+                Log.i("testLog", "onFailure")
 
                 Log.i("testlog", "onFailure ${t.message}")
             }
