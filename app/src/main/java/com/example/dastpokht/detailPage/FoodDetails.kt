@@ -44,12 +44,6 @@ class FoodDetails : Fragment() {
             implementFoodDetail(item)
         }
 
-
-        /*val adapter = item?.recipe?.totalNutrients?.let { FoodDetailAdapter(data = it) }
-        binding.showDetailNut.adapter = adapter
-
-        adapter?.submitList(mutableListOf(item.recipe!!.totalNutrients))
-*/
     }
 
     private fun implementFoodDetail(item: Hit) {

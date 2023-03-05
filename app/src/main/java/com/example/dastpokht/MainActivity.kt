@@ -2,6 +2,7 @@
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.dastpokht.databinding.ActivityMainBinding
 
  class MainActivity : AppCompatActivity() {
@@ -12,6 +13,7 @@ import com.example.dastpokht.databinding.ActivityMainBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
     }
 }
 

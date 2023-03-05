@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.dastpokht.FoodViewModel
@@ -29,11 +28,10 @@ class ShowFoodList : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentShowFoodListBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,14 +40,29 @@ class ShowFoodList : Fragment() {
         val viewModel = ViewModelProvider(requireActivity())[FoodViewModel::class.java]
 
 
-        binding.searchButton.setOnClickListener{
+        binding.searchButton.setOnClickListener {
 
             val food = binding.searchFood.editText?.text.toString()
 
-            Log.i("testLog","food -->$food")
+            binding.loading.visibility = View.VISIBLE
+            binding.errorTextView.visibility = View.GONE
+
+            Log.i("testLog", "food -->$food")
 
             viewModel.getFoodApi(foodSearch = food)
+
         }
+
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it == true) {
+                binding.loading.visibility = View.GONE
+            } else {
+
+                binding.loading.visibility = View.GONE
+                binding.errorTextView.visibility = View.VISIBLE
+            }
+        }
+
 
         val adapter = FoodListAdapter { hitsClicked ->
 
@@ -63,11 +76,11 @@ class ShowFoodList : Fragment() {
         }
         binding.foodListRecycler.adapter = adapter
 
-        viewModel.hits.observe(viewLifecycleOwner, Observer {
+        viewModel.hits.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.submitList(it)
             }
-        })
+        }
 
 
     }

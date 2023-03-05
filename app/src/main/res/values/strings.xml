@@ -9,4 +9,7 @@
     <string name="carb">Carb</string>
     <string name="kcal">Kcal</string>
     <string name="search">search</string>
+    <string name="error_onFailure">Check your internet connection please</string>
+    <string name="about">about</string>
+    <string name="home">home</string>
 </resources>

@@ -16,6 +16,8 @@ class FoodViewModel : ViewModel() {
     val hits: MutableLiveData<List<Hit>?>
         get() = _hits
 
+    var loading = MutableLiveData<Boolean?>()
+
     private var clickedUri: String? = null
     var findFood: Hit? = null
 
@@ -37,7 +39,7 @@ class FoodViewModel : ViewModel() {
     }
 
 
-    fun getFoodApi(foodSearch:String) {
+    fun getFoodApi(foodSearch: String) {
         DastpokhtAPi.retrofitService.getProperties(
             foodSearch,
             "aeff32ad",
@@ -46,17 +48,18 @@ class FoodViewModel : ViewModel() {
 
             override fun onResponse(call: Call<ApiFood>, response: Response<ApiFood>) {
 
-                Log.i("testLog", "onResponse --> $foodSearch")
+                Log.i("testLog", "onResponse --> ${response.message()}")
 
                 _hits.value = response.body()?.hits
 
+                loading.value = response.isSuccessful
             }
 
             override fun onFailure(call: Call<ApiFood>, t: Throwable) {
 
-                Log.i("testLog", "onFailure")
-
                 Log.i("testlog", "onFailure ${t.message}")
+
+                loading.value = t.equals(false)
             }
         })
     }
