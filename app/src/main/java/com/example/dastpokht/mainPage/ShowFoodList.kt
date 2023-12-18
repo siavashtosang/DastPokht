@@ -45,9 +45,8 @@ class ShowFoodList : Fragment() {
             val food = binding.searchFood.editText?.text.toString()
 
             binding.loading.visibility = View.VISIBLE
+            binding.welcome.visibility = View.GONE
             binding.errorTextView.visibility = View.GONE
-
-            Log.i("testLog", "food -->$food")
 
             viewModel.getFoodApi(foodSearch = food)
 
@@ -56,6 +55,7 @@ class ShowFoodList : Fragment() {
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it == true) {
                 binding.loading.visibility = View.GONE
+                binding.welcome.visibility = View.GONE
             } else {
 
                 binding.loading.visibility = View.GONE
@@ -81,8 +81,6 @@ class ShowFoodList : Fragment() {
                 adapter.submitList(it)
             }
         }
-
-
     }
 
     override fun onDestroyView() {

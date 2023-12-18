@@ -12,4 +12,5 @@
     <string name="error_onFailure">Check your internet connection please</string>
     <string name="about">about</string>
     <string name="home">home</string>
+    <string name="hello_please_search_your_food_name">search your food name</string>
 </resources>
